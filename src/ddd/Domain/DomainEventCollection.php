@@ -1,11 +1,19 @@
 <?php
 
+/**
+ * Class DomainEventCollection
+ */
 class DomainEventCollection implements \Iterator
 {
     /**
      * @var array
      */
-    private $domainEvents;
+    private $domainEvents = [];
+
+    /**
+     * @var int
+     */
+    private $currentIndex = 0;
 
     /**
      * Return the current element
@@ -15,7 +23,7 @@ class DomainEventCollection implements \Iterator
      */
     public function current()
     {
-        // TODO: Implement current() method.
+        $this->domainEvents[$this->currentIndex];
     }
 
     /**
@@ -26,7 +34,7 @@ class DomainEventCollection implements \Iterator
      */
     public function next()
     {
-        // TODO: Implement next() method.
+        ++$this->currentIndex;
     }
 
     /**
@@ -37,7 +45,7 @@ class DomainEventCollection implements \Iterator
      */
     public function key()
     {
-        // TODO: Implement key() method.
+        return $this->currentIndex;
     }
 
     /**
@@ -49,7 +57,7 @@ class DomainEventCollection implements \Iterator
      */
     public function valid()
     {
-        // TODO: Implement valid() method.
+        return isset($this->domainEvents[$this->currentIndex]);
     }
 
     /**
@@ -60,6 +68,6 @@ class DomainEventCollection implements \Iterator
      */
     public function rewind()
     {
-        // TODO: Implement rewind() method.
+        $this->currentIndex = 0;
     }
 }

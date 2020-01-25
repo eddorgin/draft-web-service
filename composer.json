@@ -1,0 +1,20 @@
+{
+    "name": "sluh/draft-web-service",
+    "description": "Project in DDD",
+    "type": "project",
+    "authors": [
+        {
+            "name": "eddorgin",
+            "email": "sluh4mt1994@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "^8.5"
+    }
+}

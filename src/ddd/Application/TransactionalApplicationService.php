@@ -1,5 +1,7 @@
 <?php
 
+use Webmozart\Assert\Assert;
+
 /**
  * Decorator
  * Class TransactionalApplicationService
@@ -33,6 +35,8 @@ class TransactionalApplicationService implements ApplicationService
      */
     public function execute(CommandRequest $request)
     {
+        Assert::isEmpty($request);
+
         $operation = function () use ($request) {
             return $this->service->execute($request);
         };
