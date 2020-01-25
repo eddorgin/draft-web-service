@@ -1,5 +1,9 @@
 <?php
 
+namespace App\DDD\Domain;
+
+use App\DDD\Domain\Event\DomainEvent;
+
 /**
  * Interface DomainEventSubscriber
  */

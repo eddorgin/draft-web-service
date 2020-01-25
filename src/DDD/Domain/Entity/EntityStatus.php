@@ -1,7 +1,10 @@
 <?php
 
+namespace App\DDD\Domain\Entity;
+
 /**
  * Class EntityStatus
+ * @package App\DDD\Domain\Entity
  */
 abstract class EntityStatus
 {
@@ -32,7 +35,7 @@ abstract class EntityStatus
     protected static function ensureIsValidId(int $status)
     {
         if (!in_array($status, array_keys(self::getValidStates()), true)) {
-            throw new InvalidArgumentException('Invalid status id given');
+            throw new \InvalidArgumentException('Invalid status id given');
         }
     }
 
@@ -42,7 +45,7 @@ abstract class EntityStatus
     protected static function ensureIsValidName(string $status)
     {
         if (!in_array($status, self::getValidStates(), true)) {
-            throw new InvalidArgumentException('Invalid status name given');
+            throw new \InvalidArgumentException('Invalid status name given');
         }
     }
 

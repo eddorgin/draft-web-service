@@ -1,6 +1,9 @@
 <?php
 
 
+use App\DDD\Domain\Entity\EntityId;
+use App\DDD\Domain\Entity\EntityStatus;
+
 class WorkTime
 {
     /**

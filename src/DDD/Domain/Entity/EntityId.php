@@ -1,7 +1,10 @@
 <?php
 
+namespace App\DDD\Domain\Entity;
+
 /**
  * Class EntityId
+ * @package App\DDD\Domain\Entity
  */
 class EntityId
 {

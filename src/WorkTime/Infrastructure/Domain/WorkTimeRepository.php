@@ -1,5 +1,9 @@
 <?php
 
+use App\DDD\Application\Persistence;
+use App\DDD\Domain\DomainRepository;
+use App\DDD\Domain\Entity\EntityId;
+
 /**
  * Class WorkTimeRepository
  */
@@ -27,15 +31,20 @@ class WorkTimeRepository implements DomainRepository
         return new EntityId($this->persistence->generateId());
     }
 
+    /**
+     * @param EntityId $id
+     * @return WorkTime
+     * @throws Exception
+     */
     public function findById(EntityId $id): WorkTime
     {
         try {
             $arrayData = $this->persistence->retrieve($id->getId());
-        } catch (OutOfBoundsException $e) {
-            throw new OutOfBoundsException(sprintf('Post with id %d does not exist', $id->getId()), 0, $e);
+        } catch (\OutOfBoundsException $e) {
+            throw new \OutOfBoundsException(sprintf('Post with id %d does not exist', $id->getId()), 0, $e);
         }
 
-        return WorkTime::fromState($arrayData);
+        return WorkTimeFactory::createEntity(new EntityId($arrayData['id']));
     }
 
     /**

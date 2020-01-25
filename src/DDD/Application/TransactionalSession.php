@@ -1,7 +1,10 @@
 <?php
 
+namespace App\DDD\Application;
+
 /**
  * Interface TransactionalSession
+ * @package App\DDD\Application
  */
 interface TransactionalSession
 {

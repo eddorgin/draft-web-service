@@ -1,5 +1,9 @@
 <?php
 
+namespace App\DDD\Infrastructure\Persistence\InMemory;
+
+use App\DDD\Application\Persistence;
+
 /**
  * Class InMemoryPersistence
  */
@@ -41,7 +45,7 @@ class InMemoryPersistence implements Persistence
     public function retrieve(int $id): array
     {
         if (!isset($this->data[$id])) {
-            throw new OutOfBoundsException(sprintf('No data found for ID %d', $id));
+            throw new \OutOfBoundsException(sprintf('No data found for ID %d', $id));
         }
 
         return $this->data[$id];
@@ -54,7 +58,7 @@ class InMemoryPersistence implements Persistence
     public function delete(int $id)
     {
         if (!isset($this->data[$id])) {
-            throw new OutOfBoundsException(sprintf('No data found for ID %d', $id));
+            throw new \OutOfBoundsException(sprintf('No data found for ID %d', $id));
         }
 
         unset($this->data[$id]);

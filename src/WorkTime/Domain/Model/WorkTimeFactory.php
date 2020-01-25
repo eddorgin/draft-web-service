@@ -1,6 +1,9 @@
 <?php
 
 
+use App\DDD\Domain\Entity\EntityFactory;
+use App\DDD\Domain\Entity\EntityId;
+
 class WorkTimeFactory extends EntityFactory
 {
     /**
@@ -8,7 +11,7 @@ class WorkTimeFactory extends EntityFactory
      * @return mixed|WorkTime
      * @throws Exception
      */
-    public function createEntity(EntityId $entityId)
+    public static function createEntity(EntityId $entityId)
     {
         return new WorkTime(
             new EntityId(),

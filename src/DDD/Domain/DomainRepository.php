@@ -1,5 +1,9 @@
 <?php
 
+namespace App\DDD\Domain;
+
+use App\DDD\Domain\Entity\EntityId;
+
 /**
  * Repository encapsulates the set of objects persisted in a data store and the operations performed over them
  * providing a more object-oriented view of the persistence layer

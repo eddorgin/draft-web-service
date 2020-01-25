@@ -1,10 +1,13 @@
 <?php
 
+namespace App\DDD\Application;
+
 use Webmozart\Assert\Assert;
 
 /**
  * Decorator
  * Class TransactionalApplicationService
+ * @package App\DDD\Application
  */
 class TransactionalApplicationService implements ApplicationService
 {
@@ -29,11 +32,11 @@ class TransactionalApplicationService implements ApplicationService
     }
 
     /**
-     * @param CommandRequest $request
+     * @param $request
      *
      * @return mixed
      */
-    public function execute(CommandRequest $request)
+    public function execute($request)
     {
         Assert::isEmpty($request);
 
