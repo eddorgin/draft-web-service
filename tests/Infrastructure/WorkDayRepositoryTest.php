@@ -1,18 +1,23 @@
 <?php
 
+namespace App\Tests\Infrastructure;
 
+use App\DDD\Domain\Entity\EntityId;
+use App\DDD\Infrastructure\Persistence\InMemory\InMemoryPersistence;
+use App\WorkDay\Domain\Model\WorkDayStatus;
+use App\WorkDay\Infrastructure\Domain\WorkDayRepository;
 use PHPUnit\Framework\TestCase;
 
-class PostRepositoryTest extends TestCase
+class WorkDayRepositoryTest extends TestCase
 {
     /**
-     * @var WorkTimeRepository
+     * @var WorkDayRepository
      */
-    private WorkTimeRepository $repository;
+    private WorkDayRepository $repository;
 
     protected function setUp(): void
     {
-        $this->repository = new WorkTimeRepository(new InMemoryPersistence());
+        $this->repository = new WorkDayRepository(new InMemoryPersistence());
     }
 
     public function testCanGenerateId()
@@ -22,7 +27,7 @@ class PostRepositoryTest extends TestCase
 
     public function testThrowsExceptionWhenTryingToFindWorkTimeWhichDoesNotExist()
     {
-        $this->expectException(OutOfBoundsException::class);
+        $this->expectException(\OutOfBoundsException::class);
         $this->expectExceptionMessage('Post with id 42 does not exist');
 
         $this->repository->findById(new EntityId(42));
@@ -31,12 +36,12 @@ class PostRepositoryTest extends TestCase
     public function testCanPersistWorkTimeDraft()
     {
         $workTimeId = $this->repository->generateId();
-        $workTime = WorkTime::startWork($workTimeId);
+        $workTime = WorkDay::startWork($workTimeId);
         $this->repository->save($workTime);
 
         $this->repository->findById($workTimeId);
 
         $this->assertEquals($workTimeId, $this->repository->findById($workTimeId)->getId());
-        $this->assertEquals(WorkTimeStatus::STATE_ACTIVE, $workTime->getStatus()->toString());
+        $this->assertEquals(WorkDayStatus::STATE_ACTIVE, $workTime->getStatus()->toString());
     }
 }

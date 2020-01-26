@@ -8,5 +8,5 @@ namespace App\DDD\Domain\Event;
  */
 interface DomainEvent
 {
-    public function occurredOn();
+    public function getOccurredOn();
 }

@@ -1,13 +1,17 @@
 <?php
 
+namespace App\WorkDay\Infrastructure\Domain;
+
 use App\DDD\Application\Persistence;
 use App\DDD\Domain\DomainRepository;
 use App\DDD\Domain\Entity\EntityId;
+use App\WorkDay\Domain\Model\WorkDay;
+use App\WorkDay\Domain\Model\WorkDayFactory;
 
 /**
  * Class WorkTimeRepository
  */
-class WorkTimeRepository implements DomainRepository
+class WorkDayRepository implements DomainRepository
 {
     /**
      * @var Persistence
@@ -33,10 +37,9 @@ class WorkTimeRepository implements DomainRepository
 
     /**
      * @param EntityId $id
-     * @return WorkTime
-     * @throws Exception
+     * @return WorkDay
      */
-    public function findById(EntityId $id): WorkTime
+    public function findById(EntityId $id): WorkDay
     {
         try {
             $arrayData = $this->persistence->retrieve($id->getId());
@@ -44,11 +47,11 @@ class WorkTimeRepository implements DomainRepository
             throw new \OutOfBoundsException(sprintf('Post with id %d does not exist', $id->getId()), 0, $e);
         }
 
-        return WorkTimeFactory::createEntity(new EntityId($arrayData['id']));
+        return WorkDayFactory::createEntityFromArray($arrayData);
     }
 
     /**
-     * @param WorkTime $workTime
+     * @param WorkDay $workTime
      * @return bool
      */
     public function save($workTime): bool
