@@ -7,10 +7,9 @@ use App\DDD\Domain\DomainRepository;
 use App\DDD\Domain\Entity\EntityId;
 use App\WorkDay\Domain\Model\WorkDay;
 use App\WorkDay\Domain\Model\WorkDayFactory;
+use App\WorkDay\Domain\WorkDayDto;
 
-/**
- * Class WorkTimeRepository
- */
+
 class WorkDayRepository implements DomainRepository
 {
     /**
@@ -47,20 +46,22 @@ class WorkDayRepository implements DomainRepository
             throw new \OutOfBoundsException(sprintf('Post with id %d does not exist', $id->getId()), 0, $e);
         }
 
-        return WorkDayFactory::createEntityFromArray($arrayData);
+        $workDayDto = new WorkDayDto();
+        $workDayDto = $workDayDto->fetchEntityFromArray($arrayData);
+        return WorkDayFactory::recoverEntityFromDto($workDayDto);
     }
 
     /**
-     * @param WorkDay $workTime
+     * @param WorkDay $workDay
      * @return bool
      */
-    public function save($workTime): bool
+    public function save($workDay): bool
     {
         $this->persistence->persist([
-            'id' => $workTime->getId()->toInt(),
-            'statusId' => $workTime->getStatus()->toInt(),
-            'timeSpent' => $workTime->getTimeSpent(),
-            'startDateTime' => $workTime->getStartDateTime(),
+            'id' => $workDay->getId()->toInt(),
+            'statusId' => $workDay->getStatus()->toInt(),
+            'timeSpent' => $workDay->getTimeSpent(),
+            'startDateTime' => $workDay->getStartDateTime(),
         ]);
     }
 }

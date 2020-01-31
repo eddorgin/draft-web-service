@@ -9,8 +9,8 @@ namespace App\DDD\Domain\Entity;
 abstract class EntityFactory
 {
     /**
-     * @param array $data
+     * @param EntityDto $entityDto
      * @return mixed
      */
-    abstract public static function createEntityFromArray(array $data);
+    abstract public static function recoverEntityFromDto(EntityDto $entityDto);
 }

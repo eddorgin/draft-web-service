@@ -2,10 +2,12 @@
 
 namespace App\WorkDay\Domain\Model;
 
+use App\DDD\Domain\Entity\EntityDto;
 use App\DDD\Domain\Entity\EntityFactory;
 use App\WorkDay\Domain\State\FinishedState;
 use App\WorkDay\Domain\State\PausedState;
 use App\WorkDay\Domain\State\StartedState;
+use App\WorkDay\Domain\WorkDayDto;
 
 /**
  * Class WorkDayFactory
@@ -14,21 +16,16 @@ use App\WorkDay\Domain\State\StartedState;
 class WorkDayFactory extends EntityFactory
 {
     /**
-     * @param array $data
-     * @return WorkDay
+     * @param EntityDto $workDayDto
+     * @return mixed
      */
-    public static function createEntityFromArray(array $data)
+    public static function recoverEntityFromDto(EntityDto $workDayDto)
     {
         /**
-         * @var WorkDayStatus $status
+         * @var WorkDay $workDay
          */
-        $id = $data['id'];
-        $workDay = new WorkDay($id);
-        $statusId = $data['statusId'];
-        $status = WorkDayStatus::fromInt($statusId);
-        $workDay->setTimeSpent($data['timeSpent']);
-        $workDay->setStatus($status);
-        $workDay->setStartDateTime($data['startDateTime']);
+        $workDay = $workDayDto->getFetchedEntity();
+        $status = $workDay->getStatus();
 
         switch ($status->toString())
         {
