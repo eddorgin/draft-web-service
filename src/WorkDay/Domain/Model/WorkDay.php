@@ -8,6 +8,7 @@ use App\DDD\Domain\State\Context;
 use App\DDD\Domain\State\State;
 use App\WorkDay\Domain\State\FinishedState;
 use App\WorkDay\Domain\State\PausedState;
+use App\WorkDay\Domain\State\ResumedState;
 use App\WorkDay\Domain\State\StartedState;
 
 /**
@@ -113,9 +114,16 @@ class WorkDay implements Context
     /**
      * @return $this
      */
-    public function finishedWork()
+    public function finishWork()
     {
         $this->transitionTo(new FinishedState());
+        $this->state->handle();
+        return $this;
+    }
+
+    public function resumeWork()
+    {
+        $this->transitionTo(new ResumedState());
         $this->state->handle();
         return $this;
     }

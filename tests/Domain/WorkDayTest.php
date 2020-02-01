@@ -2,7 +2,6 @@
 
 namespace App\Tests\Domain;
 
-use App\DDD\Domain\DomainEventPublisher;
 use App\DDD\Domain\Entity\EntityId;
 use App\WorkDay\Domain\Event\WorkDayFinished;
 use App\WorkDay\Domain\Event\WorkDayPaused;
@@ -61,12 +60,15 @@ class WorkDayTest extends TestCase
         $id = $this->getSubscribeId();
         $workDay = $this->getWorkDay();
         $workDay->startWork();
-        $workDay->finishedWork();
+        $workDay->finishWork();
         WorkDayEventPublisher::instance()->unsubscribe($id);
 
         $this->assertEvent($workDay, WorkDayFinished::class);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testCanResumeWorkDayAfterPausedEvent()
     {
         $id = $this->getSubscribeId();

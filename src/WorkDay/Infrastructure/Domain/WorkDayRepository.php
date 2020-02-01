@@ -9,7 +9,10 @@ use App\WorkDay\Domain\Model\WorkDay;
 use App\WorkDay\Domain\Model\WorkDayFactory;
 use App\WorkDay\Domain\WorkDayDto;
 
-
+/**
+ * Class WorkDayRepository
+ * @package App\WorkDay\Infrastructure\Domain
+ */
 class WorkDayRepository implements DomainRepository
 {
     /**
