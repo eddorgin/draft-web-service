@@ -33,10 +33,19 @@ final class WorkDayStarted implements DomainEvent
     }
 
     /**
-     *
+     * @return \DateTimeImmutable
      */
-    public function getOccurredOn()
+    public function getOccurredOn(): \DateTimeImmutable
     {
         return $this->startDateTime;
+    }
+
+    /**
+     * Method return the entity id
+     * @return EntityId
+     */
+    public function getEntityId(): EntityId
+    {
+        return $this->entityId;
     }
 }

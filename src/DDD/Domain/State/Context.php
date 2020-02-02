@@ -11,7 +11,7 @@ interface Context
 {
     /**
      * @param State $state
-     * @return mixed
+     * @return Context
      */
-    public function transitionTo(State $state);
+    public function transitionTo(State $state): Context;
 }

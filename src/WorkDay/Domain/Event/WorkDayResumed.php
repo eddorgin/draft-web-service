@@ -34,8 +34,20 @@ class WorkDayResumed implements DomainEvent
         $this->resumedDateTime = $resumedDateTime;
     }
 
-    public function getOccurredOn()
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getOccurredOn(): \DateTimeImmutable
     {
         return $this->resumedDateTime;
+    }
+
+    /**
+     * Method return the entity id
+     * @return EntityId
+     */
+    public function getEntityId(): EntityId
+    {
+        return $this->entityId;
     }
 }

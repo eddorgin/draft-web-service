@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  php:
+    build: .docker/php
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    command: bash -c "composer install &&
+      php -d variables_order=EGPCS -S 0.0.0.0:80 -t src/WorkDay/Infrastructure/Symfony/public"
+    ports:
+      - 8089:80

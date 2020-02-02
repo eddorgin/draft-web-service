@@ -136,10 +136,15 @@ class WorkDay implements Context
         $this->timeSpent = $timeSpent;
     }
 
-    public function transitionTo(State $state)
+    /**
+     * @param State $state
+     * @return Context
+     */
+    public function transitionTo(State $state): Context
     {
         $this->state = $state;
         $this->state->setContext($this);
+        return $this;
     }
 
     /**

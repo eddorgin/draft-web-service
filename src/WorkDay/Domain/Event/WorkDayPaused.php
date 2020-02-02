@@ -37,8 +37,17 @@ class WorkDayPaused implements DomainEvent
     /**
      * @return \DateTimeImmutable
      */
-    public function getOccurredOn()
+    public function getOccurredOn(): \DateTimeImmutable
     {
         return $this->pausedDateTime;
+    }
+
+    /**
+     * Method return the entity id
+     * @return EntityId
+     */
+    public function getEntityId(): EntityId
+    {
+        return $this->entityId;
     }
 }

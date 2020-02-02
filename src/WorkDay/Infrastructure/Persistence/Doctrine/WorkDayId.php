@@ -13,15 +13,29 @@ use Doctrine\DBAL\Types\GuidType;
  */
 class WorkDayId extends GuidType
 {
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'WorkDayId';
     }
 
+    /**
+     * @param mixed $value
+     * @param AbstractPlatform $platform
+     * @return mixed
+     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         return $value->id();
     }
+
+    /**
+     * @param mixed $value
+     * @param AbstractPlatform $platform
+     * @return EntityId|mixed
+     */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         return new EntityId($value);
