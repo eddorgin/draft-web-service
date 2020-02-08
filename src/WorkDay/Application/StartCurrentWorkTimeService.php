@@ -42,7 +42,7 @@ class StartCurrentWorkTimeService implements ApplicationService
 
         $workDayDto = new WorkDayDto();
 
-        $workDayDto = $workDayDto->fetchEntityFromArray([
+        $workDayDto = $workDayDto->fetchFromArray([
             'id' => $workDayId,
             'status' => $workDayStatus,
             'timeSpent' => $workDayTimeSpent,

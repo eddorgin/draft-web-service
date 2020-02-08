@@ -39,18 +39,25 @@ class WorkDayController extends AbstractController
 
     /**
      * Show the current work day
-     * @Route("/api/current_work_day", name="workday")
+     * @Route("/api/start-workday", name="workday")
      * @param WorkDayRepository $workDayRepository
      * @return Response
      * @throws \Exception
      */
-    public function showCurrentWorkDay(WorkDayRepository $workDayRepository)
+    public function startWorkDay(WorkDayRepository $workDayRepository)
     {
         $id = $workDayRepository->generateId();
         $workDay = new WorkDay($id);
         $workDay->startWork();
-        $response = new Response(serialize(['startDateTime' => $workDay->getStartDateTime(), 'id' => $workDay->getId()]));
-        $response->setContent('application/json');
+        $response = new Response(
+            json_encode([
+                'startDateTime' => $workDay->getStartDateTime(),
+                'id' => $workDay->getId(),
+                'state' => $workDay->getStatus()
+            ])
+        );
+        $response->headers->set('Content-Type', 'application/json');
+
         return $response;
     }
 }

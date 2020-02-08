@@ -58,7 +58,7 @@ final class WorkDayDto extends EntityDto
      * @param array $externalData
      * @return $this
      */
-    public function fetchEntityFromArray(array $externalData)
+    public function fetchFromArray(array $externalData)
     {
         Assert::isEmpty($externalData[self::ID]);
         Assert::isEmpty($externalData[self::STATUS]);

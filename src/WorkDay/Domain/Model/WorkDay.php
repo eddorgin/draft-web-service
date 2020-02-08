@@ -54,7 +54,7 @@ class WorkDay implements Context
      */
     public function getId()
     {
-        return $this->id;
+        return $this->id->getId();
     }
 
     /**
@@ -74,11 +74,11 @@ class WorkDay implements Context
     }
 
     /**
-     * @return EntityStatus
+     * @return string
      */
-    public function getStatus(): EntityStatus
+    public function getStatus(): string
     {
-        return $this->status;
+        return $this->status->toString();
     }
 
     /**
@@ -129,9 +129,9 @@ class WorkDay implements Context
     }
 
     /**
-     * @param \DateTimeImmutable $timeSpent
+     * @param int $timeSpent
      */
-    public function setTimeSpent(\DateTimeImmutable $timeSpent): void
+    public function setTimeSpent(int $timeSpent): void
     {
         $this->timeSpent = $timeSpent;
     }

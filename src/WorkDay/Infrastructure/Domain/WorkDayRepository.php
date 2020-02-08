@@ -50,7 +50,7 @@ class WorkDayRepository implements DomainRepository
         }
 
         $workDayDto = new WorkDayDto();
-        $workDayDto = $workDayDto->fetchEntityFromArray($arrayData);
+        $workDayDto = $workDayDto->fetchFromArray($arrayData);
         return WorkDayFactory::recoverEntityFromDto($workDayDto);
     }
 

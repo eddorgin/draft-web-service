@@ -1,5 +1,7 @@
 <?php
 
+namespace App\DDD\Application\Messaging;
+
 interface MessageProducer
 {
     public function open($exchange);

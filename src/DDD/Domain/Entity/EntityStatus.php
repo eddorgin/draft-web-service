@@ -44,7 +44,7 @@ abstract class EntityStatus
      */
     protected static function ensureIsValidName(string $status)
     {
-        if (!in_array($status, self::getValidStates(), true)) {
+        if (!in_array($status, static::getValidStates(), true)) {
             throw new \InvalidArgumentException('Invalid status name given');
         }
     }
