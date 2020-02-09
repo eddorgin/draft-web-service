@@ -32,7 +32,7 @@ class StartCurrentWorkTimeService implements ApplicationService
 
     /**
      * @param null $request
-     * @return WorkDay|mixed
+     * @return CurrentWorkTimeResponse|mixed
      * @throws \Exception
      */
     public function execute($request = null)
@@ -41,6 +41,12 @@ class StartCurrentWorkTimeService implements ApplicationService
         $workDay = new WorkDay($id);
         $workDay->startWork();
         $this->repository->save($workDay);
-        return $workDay;
+        $response = new CurrentWorkTimeResponse(
+            $workDay->getId(),
+            $workDay->getStatus()->toString(),
+            $workDay->getTimeSpent(),
+            $workDay->getStartDateTime()->format('Y-m-d H:i:s')
+        );
+        return $response;
     }
 }
