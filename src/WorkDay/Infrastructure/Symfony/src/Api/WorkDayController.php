@@ -2,13 +2,12 @@
 
 namespace App\Symfony\Api;
 
-use App\WorkDay\Domain\Model\WorkDay;
-use App\WorkDay\Infrastructure\Domain\WorkDayRepository;
+use App\WorkDay\Application\StartCurrentWorkTimeService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class WorkDayController
@@ -40,20 +39,18 @@ class WorkDayController extends AbstractController
     /**
      * Show the current work day
      * @Route("/api/start-workday", name="workday")
-     * @param WorkDayRepository $workDayRepository
+     * @param StartCurrentWorkTimeService $currentWorkTimeService
      * @return Response
      * @throws \Exception
      */
-    public function startWorkDay(WorkDayRepository $workDayRepository)
+    public function startWorkDay(StartCurrentWorkTimeService $currentWorkTimeService)
     {
-        $id = $workDayRepository->generateId();
-        $workDay = new WorkDay($id);
-        $workDay->startWork();
+        $workDay = $currentWorkTimeService->execute();
         $response = new Response(
             json_encode([
                 'startDateTime' => $workDay->getStartDateTime(),
                 'id' => $workDay->getId(),
-                'state' => $workDay->getStatus()
+                'state' => $workDay->getStatus()->toString()
             ])
         );
         $response->headers->set('Content-Type', 'application/json');

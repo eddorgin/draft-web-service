@@ -32,14 +32,11 @@ class TransactionalApplicationService implements ApplicationService
     }
 
     /**
-     * @param $request
-     *
+     * @param null $request
      * @return mixed
      */
-    public function execute($request)
+    public function execute($request = null)
     {
-        Assert::isEmpty($request);
-
         $operation = function () use ($request) {
             return $this->service->execute($request);
         };

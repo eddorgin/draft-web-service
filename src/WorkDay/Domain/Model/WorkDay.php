@@ -10,6 +10,7 @@ use App\WorkDay\Domain\State\FinishedState;
 use App\WorkDay\Domain\State\PausedState;
 use App\WorkDay\Domain\State\ResumedState;
 use App\WorkDay\Domain\State\StartedState;
+use DateTimeImmutable;
 
 /**
  * Class WorkDay
@@ -23,12 +24,12 @@ class WorkDay implements Context
     public EntityId $id;
 
     /**
-     * @var \DateTimeImmutable
+     * @var int
      */
     public $timeSpent;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      */
     public $startDateTime;
 
@@ -54,31 +55,31 @@ class WorkDay implements Context
      */
     public function getId()
     {
-        return $this->id->getId();
+        return $this->id;
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return int
      */
-    public function getTimeSpent(): \DateTimeImmutable
+    public function getTimeSpent(): int
     {
         return $this->timeSpent;
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return DateTimeImmutable
      */
-    public function getStartDateTime(): \DateTimeImmutable
+    public function getStartDateTime(): DateTimeImmutable
     {
         return $this->startDateTime;
     }
 
     /**
-     * @return string
+     * @return EntityStatus
      */
-    public function getStatus(): string
+    public function getStatus(): EntityStatus
     {
-        return $this->status->toString();
+        return $this->status;
     }
 
     /**
@@ -90,9 +91,7 @@ class WorkDay implements Context
     }
 
     /**
-     * @param EntityId $entityId
-     * @return mixed|WorkDay
-     * @throws \Exception
+     * @return $this
      */
     public function startWork()
     {
@@ -148,9 +147,9 @@ class WorkDay implements Context
     }
 
     /**
-     * @param \DateTimeImmutable $startDateTime
+     * @param DateTimeImmutable $startDateTime
      */
-    public function setStartDateTime(\DateTimeImmutable $startDateTime): void
+    public function setStartDateTime(DateTimeImmutable $startDateTime): void
     {
         $this->startDateTime = $startDateTime;
     }

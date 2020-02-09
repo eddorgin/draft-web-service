@@ -21,6 +21,12 @@ interface DomainRepository
     public function generateId(): EntityId;
 
     /**
+     * @param EntityId $id
+     * @return mixed
+     */
+    public function findById(EntityId $id);
+
+    /**
      * @param $entity
      * @return bool
      */
