@@ -15,7 +15,7 @@ services:
         resource: '../../../../*'
         exclude: '../*'
 
-    App\DDD\Application\Persistence: '@App\DDD\Infrastructure\Persistence\InMemory\InMemoryPersistence'
+    App\DDD\Application\Persistence: '@App\WorkDay\Infrastructure\Persistence\Doctrine\DoctrinePersistence'
     App\DDD\Domain\DomainRepository: '@App\WorkDay\Infrastructure\Domain\WorkDayRepository'
 
     App\WorkDay\Infrastructure\Domain\WorkDayRepository:

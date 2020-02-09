@@ -14,16 +14,16 @@ interface Persistence
     public function generateId(): int;
 
     /**
-     * @param array $data
+     * @param $data
      * @return mixed
      */
-    public function persist(array $data);
+    public function persist($data);
 
     /**
      * @param int $id
-     * @return array
+     * @return mixed
      */
-    public function retrieve(int $id): array;
+    public function retrieve(int $id);
 
     /**
      * @param int $id

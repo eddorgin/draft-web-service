@@ -33,7 +33,7 @@ class InMemoryPersistence implements Persistence
      * @param array $data
      * @return mixed|void
      */
-    public function persist(array $data)
+    public function persist($data)
     {
         $this->data[$this->lastId] = $data;
     }

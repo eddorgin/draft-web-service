@@ -60,12 +60,7 @@ class WorkDayRepository implements DomainRepository
      */
     public function save($workDay): bool
     {
-        $this->persistence->persist([
-            'id' => $workDay->getId(),
-            'statusId' => $workDay->getStatus()->toInt(),
-            'timeSpent' => $workDay->getTimeSpent(),
-            'startDateTime' => $workDay->getStartDateTime(),
-        ]);
+        $this->persistence->persist($workDay);
 
         return true;
     }

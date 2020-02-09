@@ -21,7 +21,7 @@ class WorkDay implements Context
     /**
      * @var EntityId
      */
-    public EntityId $id;
+    public $id;
 
     /**
      * @var int
