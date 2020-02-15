@@ -25,11 +25,17 @@ class WorkDayRepositoryTest extends TestCase
         $this->repository = new WorkDayRepository(new InMemoryPersistence());
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testCanGenerateId()
     {
-        $this->assertEquals(1, $this->repository->generateId());
+        $this->assertEquals(1, $this->repository->generateId()->getId());
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testThrowsExceptionWhenTryingToFindWorkTimeWhichDoesNotExist()
     {
         $this->expectException(\OutOfBoundsException::class);

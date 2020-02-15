@@ -28,7 +28,7 @@ class PausedState extends State
         $currentDateTime = new \DateTimeImmutable();
         $startDateTime = $workDay->startDateTime->getTimestamp();
         $timeSpent = $currentDateTime->getTimestamp() - $startDateTime;
-        $workDay->setTimeSpent((new \DateTimeImmutable())->setTimestamp($timeSpent));
+        $workDay->setTimeSpent($timeSpent);
         $workDay->setStartDateTime($currentDateTime);
         $workDay->setStatus(WorkDayStatus::fromString(WorkDayStatus::STATE_PAUSED));
         $event = new WorkDayPaused($workDay->id, $currentDateTime);

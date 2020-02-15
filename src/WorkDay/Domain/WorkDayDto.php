@@ -37,11 +37,6 @@ final class WorkDayDto extends EntityDto
      */
     public function fetchFromEntity(WorkDay $workDay)
     {
-        Assert::isEmpty($workDay->getId());
-        Assert::isEmpty($workDay->getStatus());
-        Assert::isEmpty($workDay->getTimeSpent());
-        Assert::isEmpty($workDay->getStartDateTime());
-
         $this->workDay = $workDay;
 
         $this->externalData = [
@@ -57,14 +52,10 @@ final class WorkDayDto extends EntityDto
     /**
      * @param array $externalData
      * @return $this
+     * @throws \Exception
      */
     public function fetchFromArray(array $externalData)
     {
-        Assert::isEmpty($externalData[self::ID]);
-        Assert::isEmpty($externalData[self::STATUS]);
-        Assert::isEmpty($externalData[self::START_DATE_TIME]);
-        Assert::isEmpty($externalData[self::TIME_SPENT]);
-
         $workDay = new WorkDay(new EntityId($externalData[self::ID]));
         $workDay->setStatus(WorkDayStatus::fromString($externalData[self::STATUS]));
         $workDay->setTimeSpent($externalData[self::TIME_SPENT]);

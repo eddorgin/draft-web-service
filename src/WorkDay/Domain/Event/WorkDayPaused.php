@@ -6,6 +6,7 @@ namespace App\WorkDay\Domain\Event;
 
 use App\DDD\Domain\Entity\EntityId;
 use App\DDD\Domain\Event\DomainEvent;
+use App\WorkDay\Domain\Model\WorkDayStatus;
 
 /**
  * Class WorkDayPaused
@@ -17,6 +18,12 @@ class WorkDayPaused implements DomainEvent
      * @var EntityId
      */
     private $entityId;
+
+    /**
+     * @var string
+     */
+    private $status = WorkDayStatus::STATE_PAUSED;
+
 
     /**
      * @var \DateTimeImmutable
@@ -49,5 +56,13 @@ class WorkDayPaused implements DomainEvent
     public function getEntityId(): EntityId
     {
         return $this->entityId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
     }
 }

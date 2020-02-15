@@ -24,7 +24,7 @@ class WorkDayStatus extends EntityStatus
     private static array $validStates = [
         self::STATE_ACTIVE_ID => self::STATE_ACTIVE,
         self::STATE_FINISHED_ID => self::STATE_FINISHED,
-        self::STATE_PAUSED => self::STATE_PAUSED
+        self::STATE_PAUSED_ID => self::STATE_PAUSED
     ];
 
     /**

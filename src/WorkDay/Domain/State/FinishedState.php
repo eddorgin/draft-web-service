@@ -29,7 +29,7 @@ class FinishedState extends State
         $currentDateTime = new \DateTimeImmutable();
         $startDateTime = $workDay->startDateTime->getTimestamp();
         $timeSpent = $currentDateTime->getTimestamp() - $startDateTime;
-        $workDay->setTimeSpent($workDay->timeSpent + ((new \DateTimeImmutable())->setTimestamp($timeSpent)));
+        $workDay->setTimeSpent($workDay->timeSpent + $timeSpent);
         $workDay->setStatus(WorkDayStatus::fromString(WorkDayStatus::STATE_FINISHED));
         $event = new WorkDayFinished($workDay->id, $currentDateTime);
         WorkDayEventPublisher::instance()->publish($event);

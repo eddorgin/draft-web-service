@@ -40,9 +40,9 @@ class InMemoryPersistence implements Persistence
 
     /**
      * @param int $id
-     * @return array
+     * @return mixed
      */
-    public function retrieve(int $id): array
+    public function retrieve(int $id)
     {
         if (!isset($this->data[$id])) {
             throw new \OutOfBoundsException(sprintf('No data found for ID %d', $id));

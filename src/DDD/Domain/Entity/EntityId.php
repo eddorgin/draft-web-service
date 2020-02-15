@@ -2,6 +2,8 @@
 
 namespace App\DDD\Domain\Entity;
 
+use Ramsey\Uuid\Uuid;
+
 /**
  * Class EntityId
  * @package App\DDD\Domain\Entity
@@ -9,12 +11,14 @@ namespace App\DDD\Domain\Entity;
 class EntityId
 {
     /**
-     * @var string
+     * @var mixed
      */
     private $id;
 
     /**
-     * @param string $id
+     * EntityId constructor.
+     * @param null $id
+     * @throws \Exception
      */
     public function __construct($id = null)
     {

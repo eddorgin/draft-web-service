@@ -31,6 +31,7 @@ class WorkDayRepository implements DomainRepository
 
     /**
      * @return EntityId
+     * @throws \Exception
      */
     public function generateId(): EntityId
     {
@@ -44,13 +45,13 @@ class WorkDayRepository implements DomainRepository
     public function findById(EntityId $id): WorkDay
     {
         try {
-            $arrayData = $this->persistence->retrieve($id->getId());
+            $entity = $this->persistence->retrieve($id->getId());
         } catch (\OutOfBoundsException $e) {
             throw new \OutOfBoundsException(sprintf('Post with id %d does not exist', $id->getId()), 0, $e);
         }
 
         $workDayDto = new WorkDayDto();
-        $workDayDto = $workDayDto->fetchFromArray($arrayData);
+        $workDayDto = $workDayDto->fetchFromEntity($entity);
         return WorkDayFactory::recoverEntityFromDto($workDayDto);
     }
 

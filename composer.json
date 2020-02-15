@@ -51,6 +51,7 @@
         "symfony/twig-pack": "*",
         "symfony/validator": "*",
         "symfony/web-link": "*",
-        "symfony/yaml": "*"
+        "symfony/yaml": "*",
+        "ramsey/uuid": "^3.9"
     }
 }

@@ -21,4 +21,9 @@ interface DomainEvent
      * @return EntityId
      */
     public function getEntityId(): EntityId;
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string;
 }
