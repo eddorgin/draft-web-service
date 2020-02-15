@@ -56,7 +56,7 @@ class WorkDayRepositoryTest extends TestCase
 
         $workDay = $this->repository->findById($workDayId);
 
-        $this->assertEquals($workDayId, $workDay->getId());
+        $this->assertEquals($workDayId, $workDay->getEntityId());
         $this->assertEquals(WorkDayStatus::STATE_ACTIVE, $workDay->getStatus()->toString());
     }
 }

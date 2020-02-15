@@ -31,7 +31,7 @@ class FinishedState extends State
         $timeSpent = $currentDateTime->getTimestamp() - $startDateTime;
         $workDay->setTimeSpent($workDay->timeSpent + $timeSpent);
         $workDay->setStatus(WorkDayStatus::fromString(WorkDayStatus::STATE_FINISHED));
-        $event = new WorkDayFinished($workDay->id, $currentDateTime);
+        $event = new WorkDayFinished($workDay->entityId, $currentDateTime);
         WorkDayEventPublisher::instance()->publish($event);
         $this->context->transitionTo($this);
     }

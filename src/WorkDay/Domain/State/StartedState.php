@@ -27,7 +27,7 @@ class StartedState extends State
         $workDay->setStatus(WorkDayStatus::fromString(WorkDayStatus::STATE_ACTIVE));
         $workDay->setStartDateTime(new \DateTimeImmutable());
         $workDay->setTimeSpent(0);
-        $event = new WorkDayStarted($workDay->id, $workDay->startDateTime);
+        $event = new WorkDayStarted($workDay->entityId, $workDay->startDateTime);
         WorkDayEventPublisher::instance()->publish($event);
         $this->context->transitionTo($this);
     }

@@ -4,12 +4,16 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\WorkDay\Domain\Model\Workday" table="work_day">
+    <entity name="App\WorkDay\Domain\Model\WorkDay" table="work_day">
 
-        <id name="id" column="id" type="WorkDayId"/>
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+            <sequence-generator sequence-name="tablename_seq" allocation-size="100" initial-value="1" />
+        </id>
 
-        <field name="timeSpent" column="time_spent" type="int"/>
-        <field name="status" column="status" type="enumworkdaystatus"/>
+        <field name="entityId" column="uuid" type="WorkDayId"/>
+        <field name="timeSpent" column="time_spent" type="integer"/>
+        <field name="status" column="status" type="EnumWorkDayStatus"/>
         <field name="startDateTime" column="start_date_time" type="datetime"/>
 
     </entity>

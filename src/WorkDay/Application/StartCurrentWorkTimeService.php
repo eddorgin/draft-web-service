@@ -4,11 +4,8 @@ namespace App\WorkDay\Application;
 
 use App\DDD\Application\ApplicationService;
 use App\DDD\Domain\DomainRepository;
-use App\WorkDay\Application\StartCurrentWorkTimeRequest;
-use App\WorkDay\Domain\Event\WorkDayStarted;
 use App\WorkDay\Domain\Model\WorkDay;
-use App\WorkDay\Domain\Model\WorkDayFactory;
-use App\WorkDay\Domain\WorkDayDto;
+use Exception;
 
 /**
  * Class StartCurrentWorkTimeService
@@ -33,7 +30,7 @@ class StartCurrentWorkTimeService implements ApplicationService
     /**
      * @param null $request
      * @return CurrentWorkTimeResponse|mixed
-     * @throws \Exception
+     * @throws Exception
      */
     public function execute($request = null)
     {
@@ -43,6 +40,7 @@ class StartCurrentWorkTimeService implements ApplicationService
         $this->repository->save($workDay);
         $response = new CurrentWorkTimeResponse(
             $workDay->getId(),
+            $workDay->getEntityId()->getId(),
             $workDay->getStatus()->toString(),
             $workDay->getTimeSpent(),
             $workDay->getStartDateTime()->format('Y-m-d H:i:s')

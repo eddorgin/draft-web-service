@@ -11,7 +11,7 @@ interface Persistence
     /**
      * @return int
      */
-    public function generateId(): int;
+    public function generateId();
 
     /**
      * @param $data

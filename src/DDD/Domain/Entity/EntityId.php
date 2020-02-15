@@ -47,6 +47,6 @@ class EntityId
      */
     public function __toString()
     {
-        return $this->getId();
+        return '' . $this->getId();
     }
 }

@@ -18,10 +18,12 @@ use DateTimeImmutable;
  */
 class WorkDay implements Context
 {
+    public $id;
+
     /**
      * @var EntityId
      */
-    public $id;
+    public $entityId;
 
     /**
      * @var int
@@ -47,15 +49,15 @@ class WorkDay implements Context
         EntityId $entityId
     )
     {
-        $this->id = $entityId;
+        $this->entityId = $entityId;
     }
 
     /**
-     * @return mixed
+     * @return EntityId
      */
-    public function getId()
+    public function getEntityId()
     {
-        return $this->id;
+        return $this->entityId;
     }
 
     /**
@@ -152,5 +154,13 @@ class WorkDay implements Context
     public function setStartDateTime(DateTimeImmutable $startDateTime): void
     {
         $this->startDateTime = $startDateTime;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

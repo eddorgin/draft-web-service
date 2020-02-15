@@ -9,6 +9,8 @@ namespace App\WorkDay\Application;
  */
 class CurrentWorkTimeResponse
 {
+    private $id;
+
     /**
      * @var int
      */
@@ -31,13 +33,15 @@ class CurrentWorkTimeResponse
 
     /**
      * CurrentWorkTimeResponse constructor.
+     * @param $id
      * @param $workDayId
      * @param $status
      * @param $timeSpent
      * @param $startDateTime
      */
-    public function __construct($workDayId, $status, $timeSpent, $startDateTime)
+    public function __construct($id, $workDayId, $status, $timeSpent, $startDateTime)
     {
+        $this->id = $id;
         $this->workDayId = $workDayId;
         $this->status = $status;
         $this->timeSpent = $timeSpent;
@@ -74,5 +78,13 @@ class CurrentWorkTimeResponse
     public function getStartDateTime(): string
     {
         return $this->startDateTime;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

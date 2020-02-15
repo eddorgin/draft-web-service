@@ -37,9 +37,9 @@ class DoctrinePersistence implements Persistence
     /**
      * @return int
      */
-    public function generateId(): int
+    public function generateId()
     {
-        return $this->entityManager->getConnection()->lastInsertId();
+        return null;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Symfony\Api;
 
 use App\WorkDay\Application\CurrentWorkTimeResponse;
 use App\WorkDay\Application\StartCurrentWorkTimeService;
+use App\WorkDay\Domain\Model\WorkDay;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,8 +53,9 @@ class WorkDayController extends AbstractController
         $workTimeResponse = $currentWorkTimeService->execute();
         $response = new Response(
             json_encode([
+                'id' => $workTimeResponse->getId(),
                 'startDateTime' => $workTimeResponse->getStartDateTime(),
-                'id' => $workTimeResponse->getWorkDayId(),
+                'entityId' => $workTimeResponse->getWorkDayId(),
                 'state' => $workTimeResponse->getStatus()
             ])
         );

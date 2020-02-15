@@ -62,7 +62,6 @@ class WorkDayRepository implements DomainRepository
     public function save($workDay): bool
     {
         $this->persistence->persist($workDay);
-
         return true;
     }
 }

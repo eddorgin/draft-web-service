@@ -31,7 +31,7 @@ class PausedState extends State
         $workDay->setTimeSpent($timeSpent);
         $workDay->setStartDateTime($currentDateTime);
         $workDay->setStatus(WorkDayStatus::fromString(WorkDayStatus::STATE_PAUSED));
-        $event = new WorkDayPaused($workDay->id, $currentDateTime);
+        $event = new WorkDayPaused($workDay->entityId, $currentDateTime);
         WorkDayEventPublisher::instance()->publish($event);
         $this->context->transitionTo($this);
     }

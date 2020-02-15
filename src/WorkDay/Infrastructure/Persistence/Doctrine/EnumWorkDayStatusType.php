@@ -8,6 +8,6 @@ namespace App\WorkDay\Infrastructure\Persistence\Doctrine;
  */
 class EnumWorkDayStatusType extends EnumType
 {
-    protected $name = 'enumworkdaystatus';
-    protected $values = ['active', 'pause', 'finish'];
+    protected $name = 'EnumWorkDayStatus';
+    protected $values = ['active', 'paused', 'finished'];
 }

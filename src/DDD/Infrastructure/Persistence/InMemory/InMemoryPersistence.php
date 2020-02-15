@@ -22,7 +22,7 @@ class InMemoryPersistence implements Persistence
     /**
      * @return int
      */
-    public function generateId(): int
+    public function generateId()
     {
         $this->lastId++;
 
@@ -53,7 +53,7 @@ class InMemoryPersistence implements Persistence
 
     /**
      * @param int $id
-     * @return mixed|void
+     * @return void
      */
     public function delete(int $id)
     {

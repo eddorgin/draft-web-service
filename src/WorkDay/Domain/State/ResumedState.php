@@ -26,7 +26,7 @@ class ResumedState extends State
         $workDay->setTimeSpent($timeSpent);
         $workDay->setStartDateTime($currentDateTime);
         $workDay->setStatus(WorkDayStatus::fromString(WorkDayStatus::STATE_ACTIVE));
-        $event = new WorkDayResumed($workDay->id, $workDay->startDateTime);
+        $event = new WorkDayResumed($workDay->entityId, $workDay->startDateTime);
         WorkDayEventPublisher::instance()->publish($event);
         $this->context->transitionTo($this);
     }

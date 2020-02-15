@@ -3,12 +3,11 @@ doctrine:
         url: '%env(resolve:DATABASE_URL)%'
         types:
             WorkDayId: App\WorkDay\Infrastructure\Persistence\Doctrine\WorkDayId
-            enumworkdaystatus: App\WorkDay\Infrastructure\Persistence\Doctrine\EnumWorkDayStatusType
+            EnumWorkDayStatus: App\WorkDay\Infrastructure\Persistence\Doctrine\EnumWorkDayStatusType
 
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
         #server_version: '5.7'
     orm:
         auto_generate_proxy_classes: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true

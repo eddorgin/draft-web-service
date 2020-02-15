@@ -40,7 +40,7 @@ final class WorkDayDto extends EntityDto
         $this->workDay = $workDay;
 
         $this->externalData = [
-            self::ID => $this->workDay->getId(),
+            self::ID => $this->workDay->getEntityId(),
             self::TIME_SPENT => $this->workDay->getTimeSpent(),
             self::STATUS => $this->workDay->getStatus(),
             self::START_DATE_TIME => $this->workDay->getStartDateTime()

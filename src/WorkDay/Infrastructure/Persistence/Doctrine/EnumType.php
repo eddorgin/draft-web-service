@@ -3,6 +3,7 @@
 
 namespace App\WorkDay\Infrastructure\Persistence\Doctrine;
 
+use App\WorkDay\Domain\Model\WorkDayStatus;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
@@ -45,16 +46,16 @@ abstract class EnumType extends Type
     }
 
     /**
-     * @param mixed $value
+     * @param WorkDayStatus $value
      * @param AbstractPlatform $platform
      * @return mixed
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        if (!in_array($value, $this->values)) {
-            throw new \InvalidArgumentException("Invalid '".$this->name."' value.");
+        if ($value && !in_array($value->toString(), $this->values)) {
+            throw new \InvalidArgumentException("Invalid '". var_dump($value) ."' value.");
         }
-        return $value;
+        return $value->toString();
     }
 
     /**
