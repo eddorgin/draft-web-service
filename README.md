@@ -24,7 +24,3 @@ Design patterns
 Symfony  
 Doctrine  
 PhpUnit
-
-## Links
-https://github.com/dddinphp  
-https://github.com/the-fast-track/book-5.0-1
