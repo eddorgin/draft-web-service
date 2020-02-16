@@ -4,8 +4,7 @@
     "type": "project",
     "authors": [
         {
-            "name": "eddorgin",
-            "email": "sluh4mt1994@gmail.com"
+            "name": "eddorgin"
         }
     ],
     "autoload": {
