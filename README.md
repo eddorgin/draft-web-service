@@ -2,6 +2,7 @@
 #### What is it :question:  
 It is a sketch of the web service written in DDD.  
 *Symfony was chosen as the delivery mechanism.*  
+As an example, I applied this approach to the implementation of work with my working day time. :ok:  
 [Read more about DDD](https://airbrake.io/blog/software-design/domain-driven-design)
 
 ##### Run with Docker :whale:
