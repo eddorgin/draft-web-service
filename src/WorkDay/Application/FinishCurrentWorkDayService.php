@@ -10,10 +10,10 @@ use App\WorkDay\Domain\Model\WorkDayFactory;
 use App\WorkDay\Domain\WorkDayDto;
 
 /**
- * Class PauseCurrentWorkTimeService
+ * Class FinishCurrentWorkDayService
  * @package App\WorkDay\Application
  */
-class PauseCurrentWorkDayService implements ApplicationService
+class FinishCurrentWorkDayService implements ApplicationService
 {
     /**
      * @var DomainRepository
@@ -21,7 +21,7 @@ class PauseCurrentWorkDayService implements ApplicationService
     private $repository;
 
     /**
-     * PauseCurrentWorkTimeService constructor.
+     * FinishCurrentWorkDayService constructor.
      * @param DomainRepository $workDayRepository
      */
     public function __construct(DomainRepository $workDayRepository)
@@ -45,7 +45,7 @@ class PauseCurrentWorkDayService implements ApplicationService
 
         $workDayDto = $workDayDto->fetchFromEntity($workDay);
         $workDay = WorkDayFactory::recoverEntityFromDto($workDayDto);
-        $workDay->pauseWork();
+        $workDay->finishWork();
 
         $this->repository->save($workDay);
         $response = new CurrentWorkDayResponse(
