@@ -1,5 +1,5 @@
 # Draft Web Service
-####What is it :grey_question:  
+#### What is it :question:  
 It is a sketch of the web service written in DDD.  
 *Symfony was chosen as the delivery mechanism.*  
 [Read more about DDD](https://airbrake.io/blog/software-design/domain-driven-design)
@@ -16,7 +16,7 @@ docker-compose logs -f
 docker-compose down
 
 ```
-###Concepts :fire:  
+### Concepts :fire:  
 Hexagonal Architecture  
 DDD  
 Design patterns  
