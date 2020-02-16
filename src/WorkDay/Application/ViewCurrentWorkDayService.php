@@ -1,17 +1,20 @@
 <?php
 
+
 namespace App\WorkDay\Application;
+
 
 use App\DDD\Application\ApplicationService;
 use App\DDD\Domain\DomainRepository;
+use App\DDD\Domain\Entity\EntityId;
 use App\WorkDay\Domain\Model\WorkDay;
 use Exception;
 
 /**
- * Class StartCurrentWorkTimeService
+ * Class ViewCurrentWorkDayService
  * @package App\WorkDay\Application
  */
-class StartCurrentWorkTimeService implements ApplicationService
+class ViewCurrentWorkDayService implements ApplicationService
 {
     /**
      * @var DomainRepository
@@ -19,7 +22,7 @@ class StartCurrentWorkTimeService implements ApplicationService
     private $repository;
 
     /**
-     * StartCurrentWorkTimeService constructor.
+     * StartCurrentWorkDayService constructor.
      * @param DomainRepository $workDayRepository
      */
     public function __construct(DomainRepository $workDayRepository)
@@ -28,17 +31,15 @@ class StartCurrentWorkTimeService implements ApplicationService
     }
 
     /**
-     * @param null $request
-     * @return CurrentWorkTimeResponse|mixed
+     * @param CurrentWorkDayRequest $request
+     * @return CurrentWorkDayResponse|mixed
      * @throws Exception
      */
     public function execute($request = null)
     {
-        $id = $this->repository->generateId();
-        $workDay = new WorkDay($id);
-        $workDay->startWork();
-        $this->repository->save($workDay);
-        $response = new CurrentWorkTimeResponse(
+        $workDayId = $request->getWorkDayId();
+        $workDay = $this->repository->findById(new EntityId($workDayId));
+        $response = new CurrentWorkDayResponse(
             $workDay->getId(),
             $workDay->getEntityId()->getId(),
             $workDay->getStatus()->toString(),

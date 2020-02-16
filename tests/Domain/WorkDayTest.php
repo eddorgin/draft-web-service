@@ -73,6 +73,51 @@ class WorkDayTest extends TestCase
     /**
      * @throws \Exception
      */
+    public function testTimeSpentAfterPause()
+    {
+        $workDay = $this->getWorkDay();
+        $workDay->startWork();
+        sleep(1);
+        $workDay->pauseWork();
+
+        $this->assertEquals(1, $workDay->getTimeSpent());
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function testTimeSpentAfterResume()
+    {
+        $workDay = $this->getWorkDay();
+        $workDay->startWork();
+        sleep(1);
+        $workDay->pauseWork();
+        sleep(1);
+        $workDay->resumeWork();
+
+        $this->assertEquals(1, $workDay->getTimeSpent());
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function testTimeSpentAfterFinish()
+    {
+        $workDay = $this->getWorkDay();
+        $workDay->startWork();
+        sleep(1);
+        $workDay->pauseWork();
+        sleep(1);
+        $workDay->resumeWork();
+        sleep(1);
+        $workDay->finishWork();
+
+        $this->assertEquals(2, $workDay->getTimeSpent());
+    }
+
+    /**
+     * @throws \Exception
+     */
     public function testCanResumeWorkDayAfterPausedEvent()
     {
         $id = $this->getSubscribeId();

@@ -4,10 +4,10 @@
 namespace App\WorkDay\Application;
 
 /**
- * Class CurrentWorkTimeResponse
+ * Class CurrentWorkDayResponse
  * @package App\WorkDay\Application
  */
-class CurrentWorkTimeResponse
+class CurrentWorkDayResponse
 {
     private $id;
 
@@ -32,7 +32,7 @@ class CurrentWorkTimeResponse
     private $startDateTime;
 
     /**
-     * CurrentWorkTimeResponse constructor.
+     * CurrentWorkDayResponse constructor.
      * @param $id
      * @param $workDayId
      * @param $status

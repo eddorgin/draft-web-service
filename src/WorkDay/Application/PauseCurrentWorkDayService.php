@@ -12,7 +12,7 @@ use App\WorkDay\Domain\WorkDayDto;
  * Class PauseCurrentWorkTimeService
  * @package App\WorkDay\Application
  */
-class PauseCurrentWorkTimeService implements ApplicationService
+class PauseCurrentWorkDayService implements ApplicationService
 {
     /**
      * @var DomainRepository
@@ -29,8 +29,9 @@ class PauseCurrentWorkTimeService implements ApplicationService
     }
 
     /**
-     * @param null|CurrentWorkTimeRequest $request
+     * @param CurrentWorkDayRequest $request
      * @return bool|mixed
+     * @throws \Exception
      */
     public function execute($request = null)
     {

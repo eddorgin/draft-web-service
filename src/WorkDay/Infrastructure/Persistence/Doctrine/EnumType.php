@@ -3,6 +3,7 @@
 
 namespace App\WorkDay\Infrastructure\Persistence\Doctrine;
 
+use App\DDD\Domain\Entity\EntityStatus;
 use App\WorkDay\Domain\Model\WorkDayStatus;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
@@ -42,7 +43,7 @@ abstract class EnumType extends Type
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        return $value;
+        return WorkDayStatus::fromString($value);
     }
 
     /**

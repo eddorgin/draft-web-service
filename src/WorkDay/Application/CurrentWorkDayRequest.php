@@ -3,10 +3,10 @@
 namespace App\WorkDay\Application;
 
 /**
- * Class CurrentWorkTimeRequest
+ * Class CurrentWorkDayRequest
  * @package App\WorkDay\Application
  */
-class CurrentWorkTimeRequest
+class CurrentWorkDayRequest
 {
     /**
      * @var int

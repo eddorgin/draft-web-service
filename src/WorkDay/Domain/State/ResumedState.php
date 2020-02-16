@@ -11,6 +11,10 @@ use App\WorkDay\Domain\Model\WorkDay;
 use App\WorkDay\Domain\Model\WorkDayStatus;
 use App\WorkDay\Domain\WorkDayEventPublisher;
 
+/**
+ * Class ResumedState
+ * @package App\WorkDay\Domain\State
+ */
 class ResumedState extends State
 {
 

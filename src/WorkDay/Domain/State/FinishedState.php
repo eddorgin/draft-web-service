@@ -3,7 +3,6 @@
 
 namespace App\WorkDay\Domain\State;
 
-
 use App\DDD\Domain\State\State;
 use App\WorkDay\Domain\Event\WorkDayFinished;
 use App\WorkDay\Domain\Event\WorkDayPaused;

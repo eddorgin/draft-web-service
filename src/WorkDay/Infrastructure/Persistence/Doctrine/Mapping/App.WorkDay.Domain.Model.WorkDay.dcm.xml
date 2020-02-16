@@ -14,7 +14,7 @@
         <field name="entityId" column="uuid" type="WorkDayId"/>
         <field name="timeSpent" column="time_spent" type="integer"/>
         <field name="status" column="status" type="EnumWorkDayStatus"/>
-        <field name="startDateTime" column="start_date_time" type="datetime"/>
+        <field name="startDateTime" column="start_date_time" type="datetime_immutable"/>
 
     </entity>
 
