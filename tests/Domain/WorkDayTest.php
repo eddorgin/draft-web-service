@@ -4,6 +4,7 @@ namespace App\Tests\Domain;
 
 use App\DDD\Domain\Entity\EntityId;
 use App\DDD\Domain\Event\DomainEvent;
+use App\Tests\TestCaseWrapper;
 use App\WorkDay\Domain\Event\WorkDayFinished;
 use App\WorkDay\Domain\Event\WorkDayPaused;
 use App\WorkDay\Domain\Event\WorkDayResumed;
@@ -17,16 +18,16 @@ use PHPUnit\Framework\TestCase;
  * Class WorkDayTest
  * @package App\Tests\Domain
  */
-class WorkDayTest extends TestCase
+class WorkDayTest extends TestCaseWrapper
 {
     /**
      * @var TestSubscriber
      */
-    private $testSubscriber;
+    protected $subscriber;
 
     protected function setUp(): void
     {
-        $this->testSubscriber = new TestSubscriber();
+        $this->subscriber = new TestSubscriber();
     }
 
     /**
@@ -137,17 +138,8 @@ class WorkDayTest extends TestCase
      */
     private function assertEvent($workDay, $event)
     {
-        $this->assertInstanceOf($event, $this->testSubscriber->domainEvent);
+        $this->assertInstanceOf($event, $this->subscriber->domainEvent);
         $this->assertEquals($workDay->status->toString(), $this->getSubscriber()->domainEvent->getStatus());
-    }
-
-    /**
-     * @return WorkDay
-     * @throws \Exception
-     */
-    private function getWorkDay()
-    {
-        return new WorkDay(new EntityId());
     }
 
     /**
@@ -155,14 +147,6 @@ class WorkDayTest extends TestCase
      */
     private function getSubscriber()
     {
-        return $this->testSubscriber;
-    }
-
-    /**
-     * @return mixed
-     */
-    private function getSubscribeId()
-    {
-        return WorkDayEventPublisher::instance()->subscribe($this->testSubscriber);
+        return $this->subscriber;
     }
 }

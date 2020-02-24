@@ -12,10 +12,10 @@ abstract class EntityDto
     /**
      * @return mixed
      */
-    abstract function getFetchedEntity();
+    abstract public function getFetchedEntity();
 
     /**
      * @return array
      */
-    abstract function getFetchedExternalData();
+    abstract public function getFetchedExternalData();
 }

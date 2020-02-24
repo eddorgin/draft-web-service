@@ -51,6 +51,7 @@
         "symfony/validator": "*",
         "symfony/web-link": "*",
         "symfony/yaml": "*",
-        "ramsey/uuid": "^3.9"
+        "ramsey/uuid": "^3.9",
+        "monolog/monolog": "^2.0"
     }
 }

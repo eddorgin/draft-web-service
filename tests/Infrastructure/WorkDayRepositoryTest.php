@@ -4,6 +4,7 @@ namespace App\Tests\Infrastructure;
 
 use App\DDD\Domain\Entity\EntityId;
 use App\DDD\Infrastructure\Persistence\InMemory\InMemoryPersistence;
+use App\Tests\TestCaseWrapper;
 use App\WorkDay\Domain\Model\WorkDay;
 use App\WorkDay\Domain\Model\WorkDayStatus;
 use App\WorkDay\Infrastructure\Domain\WorkDayRepository;
@@ -13,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * Class WorkDayRepositoryTest
  * @package App\Tests\Infrastructure
  */
-class WorkDayRepositoryTest extends TestCase
+class WorkDayRepositoryTest extends TestCaseWrapper
 {
     /**
      * @var WorkDayRepository
